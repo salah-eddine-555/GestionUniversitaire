@@ -5,5 +5,5 @@ class cours{
     private $titre;
     private $volumeHoraire;
     private $departementid;
-
+    
 }
