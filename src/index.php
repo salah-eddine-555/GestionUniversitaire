@@ -1,4 +1,10 @@
-
 <?php
- echo "hello";
+require_once "./Database/DatabaseConnection.php";
+
+
+
+$db = new DatabaseConnection();
+$db->connect();
+
+
 ?>
