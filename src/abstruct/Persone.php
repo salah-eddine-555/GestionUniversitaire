@@ -6,11 +6,11 @@ class Persone {
     protected string $nom;
     protected string $prenom;
     protected string $email;
-    protected string $role;
+    private ?string $role;
     protected string $adresse;
     protected string $phone;
 
-    public function __construct($nom, $prenom,$email,$role,$adresse,$phone){
+    public function __construct($nom, $prenom,$email,$adresse,$phone,$role=null){
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->email = $email;
@@ -101,5 +101,5 @@ class Persone {
     }
 }
 
-$persone1 = new Persone('salah', 'zemrani', 'salah@gmail.com', 'admin', 'adresee1', '09876543');
-echo $persone1->ToString();
+// $persone1 = new Persone('salah', 'zemrani', 'salah@gmail.com', 'admin', 'adresee1', '09876543');
+// echo $persone1->ToString();
