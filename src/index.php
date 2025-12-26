@@ -10,9 +10,9 @@ include "./service/FormateurService.php";
 include "./repository/FormateurRepository.php";
 
 $data = [
-    'nom' => 'ANOURE',
-    'prenom' => 'NOURI',
-    'email' => 'anoure@example.com',
+    'nom' => 'mohamed',
+    'prenom' => 'hamdi',
+    'email' => 'hamdi@example.com',
     'adresse' => '144 rue ',
     'phone' => '0612345678',
     'specialisation' => 'Informatique'
@@ -22,11 +22,11 @@ $data = [
 
 try{
     $service= new FormateurService();
-    $formateur = $service->creeFormateur($data);
+    $formateur = $service->UpdateFormateur(1, $data);
 
     $repo = new FormateurRepository();
-    $repo->create($formateur);
-        echo "le formateur est cree avec succes .";
+    $repo->update($formateur);
+        echo "le formateur est update avec succes .";
 
 } catch (InputEmptyException $e) {
     echo "empty" . $e->getMessage();

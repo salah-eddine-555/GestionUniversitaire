@@ -2,6 +2,7 @@
 class Formateur extends Persone{
 
     private string $specialisation;
+    private ?int $idFormateur;
 
     public function __construct($nom, $prenom,$email,$adresse,$phone, $specialisation){
         parent::__construct($nom, $prenom,$email,$adresse,$phone);
@@ -9,10 +10,19 @@ class Formateur extends Persone{
 
     }
     //getter
+    public function getId(): ?int{
+        return $this->idFormateur;  
+    }
     public function getSpecialisation(){
         return $this->specialisation;
     }
     //setters
+
+    public function setId($idFormateur): void {
+        $this->idFormateur = $idFormateur;
+    }
+
+
     public function setSpecialisation($specialisation){
         if(empty(trim($specialisation))){
             echo " le champs specialisation est oblegatoire !";
