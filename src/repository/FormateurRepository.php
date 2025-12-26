@@ -27,6 +27,37 @@ class FormateurRepository
             return true;
     }
 
+    public function update(Formateur $formateur): bool {
+
+        try{
+
+        
+        $sql = ("UPDATE formateurs SET nomFor = :nom,
+        prenomFor = :prenom,
+        emailFor = :email,
+        adresseFor = :adresse,
+        phoneFor = :phone,
+        specialisation = :specialisation
+        WHERE idFormateur = :id");
+        
+        $stmt = $this->conn->prepare($sql);
+         $stmt->execute([
+                ":nom" => $formateur->getNom(),
+                ":prenom"=> $formateur->getPrenom(),
+                ":email" => $formateur->getEmail(),
+                ":adresse" => $formateur->getAdresse(),
+                ":phone" => $formateur->getPhone(),
+                ":specialisation"=> $formateur->getSpecialisation(),
+                ":id" => $formateur->getId()
+            ]); 
+
+            return true;
+        }catch (Execption $e){
+            echo "erreur lorsque la modification : " .$e->getMessage();
+            return false;
+        }    
+    }
+
     
 }
 
