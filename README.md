@@ -12,3 +12,9 @@ diagramme de cas d'utilisation
 diagramme de class
 
 ![alt text](<WhatsApp Image 2025-12-23 at 12.16.28.jpeg>)
+
+
+
+
+link jira:
+https://aymaneelhassouni3-1765792661059.atlassian.net/jira/software/projects/DDACDGU/boards/34
