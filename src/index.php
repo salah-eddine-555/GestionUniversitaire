@@ -6,6 +6,7 @@ include "./Entity/Etudiante.php";
 include "./Exception/InputEmptyException.php";
 include "./Exception/ValidationEmailException.php";
 include "./Exception/ValidationPhoneException.php";
+include "./Exception/NotExisteFomateur.php";
 include "./service/FormateurService.php";
 include "./repository/FormateurRepository.php";
 
@@ -19,23 +20,25 @@ $data = [
 ];
 // anoure@example.com
 
-
+// test pour formateur; 
 try{
     $service= new FormateurService();
-    $formateur = $service->UpdateFormateur(1, $data);
+    $for1 = $service->getAllFormateur();
 
-    $repo = new FormateurRepository();
-    $repo->update($formateur);
-        echo "le formateur est update avec succes .";
+    echo "les formateurs affichers avec succes .";
+    var_dump($for1);
 
-} catch (InputEmptyException $e) {
-    echo "empty" . $e->getMessage();
+}catch(NotExisteFomateur $e){
+    echo $e->getMessageExecptionNotExisteFormateur();
+}
+catch (InputEmptyException $e) {
+    echo "empty" . $e->GetMessagePersonnalise();
 
 } catch (ValidationEmailException $e) {
-    echo "note valide " . $e->getMessage();
+    echo "note valide " . $e->getMessageVlidationEmail();
 
 } catch (ValidationPhoneException $e) {
-    echo "phone not valid : " . $e->getMessage();
+    echo "phone not valid : " . $e->getMessageVlidatePhoneNumber();
 
 } catch (Exception $e) {
     echo "Erreur  : " . $e->getMessage();

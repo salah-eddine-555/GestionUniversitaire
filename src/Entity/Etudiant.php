@@ -1,5 +1,5 @@
 <?php
-class Etudiante extends Persone{
+class Etudiant extends Persone{
     
     private string $niveau;
     public function __construct($nom,$prenom,$email,$adresse,$phone,$niveau){
@@ -16,6 +16,17 @@ class Etudiante extends Persone{
             echo "le champs niveau est oblegatoire !";
         }
         $this->niveau = $niveau;
+    }
+
+    public function ToArray(){
+        return[
+            $this->nom,
+            $this->prenom,
+            $this->email,
+            $this->adresse,
+            $this->phone,
+            $this->niveau,
+        ];
     }
 
     public function ToString(){
