@@ -58,6 +58,50 @@ class FormateurRepository
         }    
     }
 
+    public function ExistFormateurById(int $id): bool {
+        $sql = "SELECT COUNT(*) FROM formateurs WHERE idFormateur = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([":id" => $id]);
+
+        return $stmt->fetchColumn() > 0;
+    }
+
+    public function delete(int $id): bool{
+        try{
+            $sql = "DELETE FROM  formateurs WHERE idFormateur = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([":id" => $id]);
+        } catch(PDOEXCEPTION $e){
+            return false;
+        }
+        return true;
+    }
+
+    public function getAllFormateurs():array {
+
+        $sql = "SELECT * FROM formateurs";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        
+          $resultats = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $formateurs = [];
+
+    foreach ($resultats as $row) {
+        $formateurs[] = new Formateur(
+            $row['nomFor'],          // nom
+            $row['prenomFor'],       // prenom
+            $row['emailFor'],        // email
+            $row['adresseFor'],      // adresse
+            $row['phoneFor'],        // phone
+            $row['specialisation'],  // specialisation
+            $row['idFormateur']      // idFormateur
+        );
+    }
+
+    return $formateurs;
+    }
+
     
 }
 

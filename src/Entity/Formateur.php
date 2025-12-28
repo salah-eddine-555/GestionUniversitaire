@@ -1,10 +1,10 @@
 <?php
 class Formateur extends Persone{
 
-    private string $specialisation;
+    private ?string $specialisation;
     private ?int $idFormateur;
 
-    public function __construct($nom, $prenom,$email,$adresse,$phone, $specialisation){
+    public function __construct($nom , $prenom,$email ,$adresse,$phone, $specialisation){
         parent::__construct($nom, $prenom,$email,$adresse,$phone);
         $this->specialisation = $specialisation;
 
