@@ -2,31 +2,33 @@
 include "./Database/DatabaseConnection.php";
 include "./abstruct/Persone.php";
 include "./Entity/Formateur.php";
-include "./Entity/Etudiante.php";
+include "./Entity/Etudiant.php";
 include "./Exception/InputEmptyException.php";
 include "./Exception/ValidationEmailException.php";
 include "./Exception/ValidationPhoneException.php";
 include "./Exception/NotExisteFomateur.php";
 include "./service/FormateurService.php";
 include "./repository/FormateurRepository.php";
+include "./service/EtudiantService.php";
+include "./repository/EtudiantRepository.php";
 
 $data = [
     'nom' => 'mohamed',
     'prenom' => 'hamdi',
     'email' => 'hamdi@example.com',
     'adresse' => '144 rue ',
-    'phone' => '0612345678',
+    'phone' => '0624494495',
     'specialisation' => 'Informatique'
 ];
 // anoure@example.com
 
-// test pour formateur; 
+// test; 
 try{
-    $service= new FormateurService();
-    $for1 = $service->getAllFormateur();
+    $service= new EtudiantService();
+    $service->createEtudiant("salah","zemrani","salah@gmail.com","Rue 122","0612345678", "1er");
 
-    echo "les formateurs affichers avec succes .";
-    var_dump($for1);
+    echo "l'etudiant cree avec succes .";
+    var_dump($service);
 
 }catch(NotExisteFomateur $e){
     echo $e->getMessageExecptionNotExisteFormateur();

@@ -32,8 +32,8 @@ class EtudiantService
             throw new ValidationEmailException('invalide email');
         }
     }
-    private function validateNumberPhone(){
-        if(!perg_match('/^[0-9]{20}$/')){
+    private function validateNumberPhone($phone){
+        if(!preg_match('/^[0-9]{10}$/', $phone)){
             throw new ValidationPhoneException("not valid phone number"); 
         }
     }
