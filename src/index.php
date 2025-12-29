@@ -2,40 +2,45 @@
 include "./Database/DatabaseConnection.php";
 include "./abstruct/Persone.php";
 include "./Entity/Formateur.php";
-include "./Entity/Etudiante.php";
+include "./Entity/Etudiant.php";
 include "./Exception/InputEmptyException.php";
 include "./Exception/ValidationEmailException.php";
 include "./Exception/ValidationPhoneException.php";
+include "./Exception/NotExisteFomateur.php";
 include "./service/FormateurService.php";
 include "./repository/FormateurRepository.php";
+include "./service/EtudiantService.php";
+include "./repository/EtudiantRepository.php";
 
 $data = [
-    'nom' => 'ANOURE',
-    'prenom' => 'NOURI',
-    'email' => 'anoure@example.com',
+    'nom' => 'mohamed',
+    'prenom' => 'hamdi',
+    'email' => 'hamdi@example.com',
     'adresse' => '144 rue ',
-    'phone' => '0612345678',
+    'phone' => '0624494495',
     'specialisation' => 'Informatique'
 ];
 // anoure@example.com
 
-
+// test; 
 try{
-    $service= new FormateurService();
-    $formateur = $service->creeFormateur($data);
+    $service= new EtudiantService();
+    $service->createEtudiant("salah","zemrani","salah@gmail.com","Rue 122","0612345678", "1er");
 
-    $repo = new FormateurRepository();
-    $repo->create($formateur);
-        echo "le formateur est cree avec succes .";
+    echo "l'etudiant cree avec succes .";
+    var_dump($service);
 
-} catch (InputEmptyException $e) {
-    echo "empty" . $e->getMessage();
+}catch(NotExisteFomateur $e){
+    echo $e->getMessageExecptionNotExisteFormateur();
+}
+catch (InputEmptyException $e) {
+    echo "empty" . $e->GetMessagePersonnalise();
 
 } catch (ValidationEmailException $e) {
-    echo "note valide " . $e->getMessage();
+    echo "note valide " . $e->getMessageVlidationEmail();
 
 } catch (ValidationPhoneException $e) {
-    echo "phone not valid : " . $e->getMessage();
+    echo "phone not valid : " . $e->getMessageVlidatePhoneNumber();
 
 } catch (Exception $e) {
     echo "Erreur  : " . $e->getMessage();
